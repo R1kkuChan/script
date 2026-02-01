@@ -5,7 +5,7 @@ local GuiService = game:GetService("GuiService")
 local lp = Players.LocalPlayer
 local rejoining = false
 
--- 🔁 СКРИПТ КОТОРЫЙ ЗАГРУЗИТСЯ ПОСЛЕ КАЖДОГО РЕКОННЕКТА
+-- 🔁 СКРИПТ КОТОРЫЙ ЗАГРУЗИТСЯ ПОСЛЕ КАЖДОГО РЕКОННЕКТ
 local function queueSelf()
     if queueteleport then
         queueteleport([[
