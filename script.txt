@@ -9,7 +9,7 @@ local rejoining = false
 local function queueSelf()
     if queueteleport then
         queueteleport([[
-            loadstring(game:HttpGet("https://pastebin.com/raw/XXXXXXXX"))()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/R1kkuChan/script/refs/heads/main/script.txt"))()
         ]])
     end
 end
