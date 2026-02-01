@@ -1,0 +1,38 @@
+local Players = game:GetService("Players")
+local TeleportService = game:GetService("TeleportService")
+local GuiService = game:GetService("GuiService")
+
+local lp = Players.LocalPlayer
+local rejoining = false
+
+-- 🔁 СКРИПТ КОТОРЫЙ ЗАГРУЗИТСЯ ПОСЛЕ КАЖДОГО РЕКОННЕКТА
+local function queueSelf()
+    if queueteleport then
+        queueteleport([[
+            loadstring(game:HttpGet("https://pastebin.com/raw/XXXXXXXX"))()
+        ]])
+    end
+end
+
+-- 🚪 РЕКОННЕКТ
+local function rejoin()
+    if rejoining then return end
+    rejoining = true
+
+    queueSelf()
+    task.wait(1)
+
+    TeleportService:Teleport(game.PlaceId, lp)
+end
+
+-- ❗ ЛОВИМ ЛЮБОЙ КИК / ОШИБКУ
+GuiService.ErrorMessageChanged:Connect(function()
+    rejoin()
+end)
+
+-- ❗ ЕСЛИ TELEPORT НЕ УДАЛСЯ
+lp.OnTeleport:Connect(function(state)
+    if state == Enum.TeleportState.Failed then
+        rejoin()
+    end
+end)
